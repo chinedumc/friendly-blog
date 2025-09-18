@@ -1,9 +1,10 @@
-import type { Route } from "./+types/home";
+// import type { Route } from "./+types/home";
+import type { Route } from "./+types";
 
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "The friendly blog" },
+    { title: "Welcome" },
     { name: "description", content: "Custom Friendly Blog" },
   ];
 }

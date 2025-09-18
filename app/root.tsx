@@ -41,6 +41,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 	);
 }
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "The friendly blog" },
+    { name: "description", content: "Custom Friendly Blog" },
+  ];
+}
+
 export default function App() {
 	return <Outlet />;
 }
