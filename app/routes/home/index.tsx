@@ -1,4 +1,5 @@
 // import type { Route } from "./+types/home";
+import { log } from "console";
 import type { Route } from "./+types";
 
 
@@ -10,5 +11,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  // console.log("hello...");
+  
   return <>My App</>
 }
