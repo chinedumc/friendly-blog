@@ -1,4 +1,8 @@
 import { Link } from "react-router";
+type Hero = {
+	name?: string;
+	text?: string;
+};
 
 const Hero = ({ name = "[NAME]", text = "My own lorem op ipsum..." }) => {
 	return (
