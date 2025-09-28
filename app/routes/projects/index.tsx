@@ -67,10 +67,9 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
 						key={category}
 						onClick={() => {
 							setSelectedCategory(category);
-							setCurrentPage(1)
+							setCurrentPage(1);
 						}}
-						className
-
+						className={`px-3 py-1 rounded text-sm cursor-pointer ${selectedCategory === category ? "bg-blue-500 text-white" : "bg-blue-700 text-gray-200"}`}
 					>
 						{category}
 					</button>
