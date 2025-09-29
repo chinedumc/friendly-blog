@@ -69,7 +69,7 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
 							setSelectedCategory(category);
 							setCurrentPage(1);
 						}}
-						className={`px-3 py-1 rounded text-sm cursor-pointer ${selectedCategory === category ? "bg-blue-500 text-white" : "bg-blue-700 text-gray-200"}`}
+						className={`px-3 py-1 rounded text-sm cursor-pointer ${selectedCategory === category ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200"}`}
 					>
 						{category}
 					</button>
