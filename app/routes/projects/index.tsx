@@ -3,6 +3,14 @@ import ProjectCard from "~/components/ProjectCard";
 import type { Route } from "./+types";
 import type { Project } from "~/types";
 import Pagination from "~/components/Pagination";
+import { AnimatePresence, motion } from "framer-motion";
+
+export function meta({}: Route.MetaArgs) {
+	return [
+		{ title: "Friendly Dev | Projects" },
+		{ name: "description", content: "Site of Friendly Blog" },
+	];
+}
 
 export async function loader({
 	request,
@@ -75,12 +83,16 @@ const ProjectsPage = ({ loaderData }: Route.ComponentProps) => {
 					</button>
 				))}
 			</div>
+			<AnimatePresence mode="wait">
+				<motion.div layout className="grid gap-6 sm:grid-cols-2">
+					{currentProjects.map((project) => (
+						<motion.div layout key={project.id}>
+							<ProjectCard project={project} />
+						</motion.div>
+					))}
+				</motion.div>
+			</AnimatePresence>
 
-			<div className="grid gap-6 sm:grid-cols-2">
-				{currentProjects.map((project) => (
-					<ProjectCard key={project.id} project={project} />
-				))}
-			</div>
 			{/* {totalPages > 1 && renderPagination()} */}
 			<Pagination
 				totalPages={totalPages}

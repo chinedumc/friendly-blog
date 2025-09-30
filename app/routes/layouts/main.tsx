@@ -1,4 +1,12 @@
 import { Outlet } from "react-router";
+import type { Route } from "../about/+types";
+
+export function meta({}: Route.MetaArgs) {
+	return [
+		{ title: "Friendly Dev " },
+		{ name: "description", content: "Custom Friendly Blog" },
+	];
+}
 
 const MainLayout = () => {
 	return (
