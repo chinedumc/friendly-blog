@@ -1,6 +1,6 @@
 const AboutPage = () => {
 	return (
-		<div className="max-w-5xl mx-auto px-6 py-16 bg-gray-900">
+		<div className="max-w-5xl mx-auto px-6 py-16 bg-gray-900 rounded">
 			{/* Intro Section */}
 			<div className="flex flex-col md:flex-row md:items-start items-center gap-10 mb-12">
 				<img
