@@ -10,17 +10,24 @@ export async function loader({ request, params }: Route.LoaderArgs) {
 
 	if (!res.ok) throw new Error("Failed to fetch data");
 
-	const postIndex = await res.json();
+	const index = await res.json();
 
-	const postMeta = postIndex.find((post: PostMeta) => post.slug === slug);
+	const postMeta = index.find((post: PostMeta) => post.slug === slug);
 
-  if(!postMeta) throw new Response('Not Found',{status:404})
+	if (!postMeta) throw new Response("Not Found", { status: 404 });
 
 	console.log(slug);
-	return {};
+
+	// Dynamically Import raw markdown
+	const markdown = await import(`../../posts/${slug}.md?raw`);
+	return { postMeta, markdown: markdown.default };
 }
-const BlogDetailsPage = () => {
+const BlogPostDetailsPage = ({ loaderData }: Route.ComponentProps) => {
+	const { postMeta, markdown } = loaderData;
+
+	console.log(postMeta, markdown);
+
 	return <>Blog Det</>;
 };
 
-export default BlogDetailsPage;
+export default BlogPostDetailsPage;
