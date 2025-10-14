@@ -22,7 +22,14 @@ export async function loader({ request, params }: Route.LoaderArgs) {
 	const markdown = await import(`../../posts/${slug}.md?raw`);
 	return { postMeta, markdown: markdown.default };
 }
-const BlogPostDetailsPage = ({ loaderData }: Route.ComponentProps) => {
+
+type BlogPostDetailsPageProps = {
+	loaderData: {
+		postMeta: PostMeta;
+		markdown: string;
+	};
+};
+const BlogPostDetailsPage = ({ loaderData }: BlogPostDetailsPageProps) => {
 	const { postMeta, markdown } = loaderData;
 
 	console.log(postMeta, markdown);
