@@ -5,6 +5,7 @@ import FeaturedProjects from "~/components/FeaturedProjects";
 import type { Project } from "~/types";
 import AboutPreview from "~/components/AboutPreview";
 import type { PostMeta } from "~/types";
+import LatestPosts from "~/components/LatestPosts";
 
 export function meta({}: Route.MetaArgs) {
 	return [
@@ -31,18 +32,20 @@ export async function loader({
 		postRes.json(),
 	]);
 
-	console.log(projects, posts);
-
+	
 	return { projects, posts };
 }
 
 const Home = ({ loaderData }: Route.ComponentProps) => {
 	// console.log("hello...");
-	const { projects } = loaderData;
+	const { projects, posts } = loaderData;
+	console.log(posts);
+
 	return (
 		<>
 			<FeaturedProjects projects={projects} count={3} />
 			<AboutPreview />
+			<LatestPosts posts={posts} />
 		</>
 	);
 };
