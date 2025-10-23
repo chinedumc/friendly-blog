@@ -3,12 +3,10 @@ import type { Route } from "./+types";
 import type { Project } from "~/types";
 import { Link } from "react-router";
 
-export async function clientLoader({
-	request,
-	params,
-}: Route.ClientLoaderArgs): Promise<Project> {
+export async function loader({ request, params }: Route.LoaderArgs) {
+	const { id } = params;
 	const res = await fetch(
-		`${import.meta.env.VITE_API_URL}/projects/${params.id}`
+		`${import.meta.env.VITE_API_URL}/projects/?filters[documentId] [$eq]=${id}&populate=*`
 	);
 
 	if (!res.ok) throw new Response("Project not found", { status: 404 });
